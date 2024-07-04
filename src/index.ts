@@ -48,6 +48,8 @@ import { findComment } from "./modules/find-comment/main";
         context,
         inputs.branch
       );
+      
+      core.setOutput("quality-gate-report", reportBody);
 
       console.log("Finding comment associated with the report...");
 
