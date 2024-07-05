@@ -49,8 +49,6 @@ import { findComment } from "./modules/find-comment/main";
         inputs.branch
       );
       
-      core.setOutput("quality-gate-report", reportBody);
-
       console.log("Finding comment associated with the report...");
 
       const issueComment = await findComment({
@@ -83,7 +81,8 @@ import { findComment } from "./modules/find-comment/main";
         });
       }
     }
-
+    core.setOutput("quality-gate-report", reportBody);
+    
     let resultMessage = `Quality gate status for \`${inputs.projectKey}\` returned \`${result.projectStatus.status}\``;
     if (
       inputs.failOnQualityGateError &&
