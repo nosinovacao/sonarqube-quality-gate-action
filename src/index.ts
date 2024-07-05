@@ -80,8 +80,9 @@ import { findComment } from "./modules/find-comment/main";
           body: reportBody,
         });
       }
+
+      core.setOutput("quality-gate-report", reportBody);
     }
-    core.setOutput("quality-gate-report", reportBody);
     
     let resultMessage = `Quality gate status for \`${inputs.projectKey}\` returned \`${result.projectStatus.status}\``;
     if (
