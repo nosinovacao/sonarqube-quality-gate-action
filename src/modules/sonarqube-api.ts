@@ -5,7 +5,8 @@ export const fetchQualityGate = async (
   url: string,
   projectKey: string,
   token: string,
-  branch?: string
+  branch?: string,
+  pullRequest?: string
 ): Promise<QualityGate> => {
   const params = branch ? { projectKey, branch } : { projectKey };
 

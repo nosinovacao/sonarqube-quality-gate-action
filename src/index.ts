@@ -17,13 +17,22 @@ import { findComment } from "./modules/find-comment/main";
         core.getInput("fail-on-quality-gate-error") === "true",
       branch: core.getInput("branch"),
       githubToken: core.getInput("github-token"),
+      pullRequest: core.getInput("pull-request"),
     };
+
+    if (pullRequest!=""){
+
+    }
+    if (typeof pullRequest !== "string" || str.length !== 0 || pullRequest !== null) {
+        inputs.branch = null
+    }
 
     const result = await fetchQualityGate(
       inputs.hostURL,
       inputs.projectKey,
       inputs.token,
-      inputs.branch
+      inputs.branch,
+      inputs.pullRequest
     );
 
     core.setOutput("project-status", result.projectStatus.status);
