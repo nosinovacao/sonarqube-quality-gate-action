@@ -20,8 +20,8 @@ import { findComment } from "./modules/find-comment/main";
       pullRequest: core.getInput("pull-request"),
     };
 
-    if (typeof pullRequest !== "string" || str.length !== 0 || pullRequest !== null) {
-        inputs.branch = null
+    if (typeof inputs.pullRequest !== "string" || inputs.pullRequest.length !== 0 || inputs.pullRequest !== null) {
+      inputs.branch = undefined
     }
 
     const result = await fetchQualityGate(
@@ -54,7 +54,7 @@ import { findComment } from "./modules/find-comment/main";
         context,
         inputs.branch
       );
-      
+
       console.log("Finding comment associated with the report...");
 
       const issueComment = await findComment({
@@ -89,7 +89,7 @@ import { findComment } from "./modules/find-comment/main";
 
       core.setOutput("quality-gate-report", reportBody);
     }
-    
+
     let resultMessage = `Quality gate status for \`${inputs.projectKey}\` returned \`${result.projectStatus.status}\``;
     if (
       inputs.failOnQualityGateError &&
