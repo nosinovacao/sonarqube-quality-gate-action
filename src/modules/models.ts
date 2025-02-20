@@ -33,4 +33,5 @@ export interface ActionInputs {
   failOnQualityGateError?: boolean;
   branch?: string;
   githubToken?: string;
+  pullRequest?: string;
 }

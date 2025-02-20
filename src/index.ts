@@ -20,9 +20,6 @@ import { findComment } from "./modules/find-comment/main";
       pullRequest: core.getInput("pull-request"),
     };
 
-    if (pullRequest!=""){
-
-    }
     if (typeof pullRequest !== "string" || str.length !== 0 || pullRequest !== null) {
         inputs.branch = null
     }
